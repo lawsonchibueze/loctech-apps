@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-loctechapp-dev-143450-authRole",
+      "UnauthRoleArn": "arn:aws:iam::484645543282:role/amplify-loctechapp-dev-143450-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::484645543282:role/amplify-loctechapp-dev-143450-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-loctechapp-dev-143450-deployment",
+      "UnauthRoleName": "amplify-loctechapp-dev-143450-unauthRole",
+      "StackName": "amplify-loctechapp-dev-143450",
+      "StackId": "arn:aws:cloudformation:us-east-1:484645543282:stack/amplify-loctechapp-dev-143450/14a87500-8522-11ed-8254-0a5cdd118105",
+      "AmplifyAppId": "d2sulsvlvpu78h"
+    },
+    "categories": {
+      "auth": {
+        "loctechapp": {}
+      }
+    }
+  }
+}

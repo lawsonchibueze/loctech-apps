@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^4.3.1",
     "@heroicons/react": "^2.0.13",
+    "amplify": "^0.0.11",
+    "aws": "^0.0.3-2",
+    "aws-amplify": "^5.0.7",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "framer-motion": "^8.0.2",
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "react-markdown": "^8.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
