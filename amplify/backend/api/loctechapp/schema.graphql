@@ -1,53 +1,9 @@
-type Instructor @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String
-  image: AWSURL
-  twitter: String
-  instagram: String
-  facebook: String
-  courses: [Course] @manyToMany(relationName: "CourseInstructor")
-}
-
-enum Level {
-  BEGINNER
-  INTERMEDIATE
-  ADVANCE
-}
-
-enum TrainingMethod {
-  INPERSON
-  ONLINE
-  CORPORTATE
-}
-
-enum CourseCategory {
-  DATA_SCIENCE
-  GRAPHICS
-  MICROSOFT_OFFICE
-  PROGRAMMING
-  SECURITY
-  PROJECT_MANAGEMENT
-  CLOUD
-  SERVERS
-}
-
 type Course @model @auth(rules: [{allow: public}]) {
   id: ID!
-  category: CourseCategory
-  isFeatured: Boolean
-  excerpt: String
-  price: Float
-  trainingMethod: TrainingMethod
-  video: AWSURL
-  courseDetails: String
-  duration: String
-  LearningObjective: String
-  CourseRequirement: String
-  targetAudience: String
-  level: Level
-  curriculum: String
-  Instructors: [Instructor] @manyToMany(relationName: "CourseInstructor")
   name: String
-  image: AWSURL
+  image: String
+  excerpt: String
+  description: String
+  price: String
+  video: String
 }
- 
