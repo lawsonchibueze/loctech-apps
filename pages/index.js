@@ -43,8 +43,8 @@ export default function Home() {
           <Link href={`/courses/${course.id}`} key={course.id}>
             <h2>{course.name}</h2>
             <p>{course.excerpt}</p>
-            <p>{course.courseDetails}</p>
-            <p>{course.level}</p>
+            {/* <p>{course.courseDetails}</p> */}
+            {/* <p>{course.level}</p> */}
 
             <img
               className="w-36 h-36 bg-contain bg-center rounded-full sm:mx-0 sm:shrink-0"

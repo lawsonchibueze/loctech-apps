@@ -14,10 +14,9 @@ type EagerCourse = {
   readonly id: string;
   readonly name?: string | null;
   readonly image?: string | null;
+  readonly price?: string | null;
   readonly excerpt?: string | null;
   readonly description?: string | null;
-  readonly price?: string | null;
-  readonly video?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -30,10 +29,9 @@ type LazyCourse = {
   readonly id: string;
   readonly name?: string | null;
   readonly image?: string | null;
+  readonly price?: string | null;
   readonly excerpt?: string | null;
   readonly description?: string | null;
-  readonly price?: string | null;
-  readonly video?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

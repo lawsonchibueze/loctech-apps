@@ -2,8 +2,7 @@ type Course @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   image: String
+  price: String
   excerpt: String
   description: String
-  price: String
-  video: String
 }

@@ -1,6 +1,6 @@
 {
   "api": {
-    "loctechapp": {
+    "loctechapps": {
       "dependsOn": [],
       "output": {
         "authConfig": {

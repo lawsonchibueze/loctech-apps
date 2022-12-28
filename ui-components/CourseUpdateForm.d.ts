@@ -16,28 +16,25 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type CourseUpdateFormInputValues = {
     name?: string;
     image?: string;
+    price?: string;
     excerpt?: string;
     description?: string;
-    price?: string;
-    video?: string;
 };
 export declare type CourseUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     image?: ValidationFunction<string>;
+    price?: ValidationFunction<string>;
     excerpt?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
-    price?: ValidationFunction<string>;
-    video?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CourseUpdateFormOverridesProps = {
     CourseUpdateFormGrid?: FormProps<GridProps>;
     name?: FormProps<TextFieldProps>;
     image?: FormProps<TextFieldProps>;
+    price?: FormProps<TextFieldProps>;
     excerpt?: FormProps<TextFieldProps>;
     description?: FormProps<TextFieldProps>;
-    price?: FormProps<TextFieldProps>;
-    video?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type CourseUpdateFormProps = React.PropsWithChildren<{
     overrides?: CourseUpdateFormOverridesProps | undefined | null;

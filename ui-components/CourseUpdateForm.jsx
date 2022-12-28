@@ -27,28 +27,25 @@ export default function CourseUpdateForm(props) {
   const initialValues = {
     name: undefined,
     image: undefined,
+    price: undefined,
     excerpt: undefined,
     description: undefined,
-    price: undefined,
-    video: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [image, setImage] = React.useState(initialValues.image);
+  const [price, setPrice] = React.useState(initialValues.price);
   const [excerpt, setExcerpt] = React.useState(initialValues.excerpt);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [price, setPrice] = React.useState(initialValues.price);
-  const [video, setVideo] = React.useState(initialValues.video);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...courseRecord };
     setName(cleanValues.name);
     setImage(cleanValues.image);
+    setPrice(cleanValues.price);
     setExcerpt(cleanValues.excerpt);
     setDescription(cleanValues.description);
-    setPrice(cleanValues.price);
-    setVideo(cleanValues.video);
     setErrors({});
   };
   const [courseRecord, setCourseRecord] = React.useState(course);
@@ -63,10 +60,9 @@ export default function CourseUpdateForm(props) {
   const validations = {
     name: [],
     image: [],
+    price: [],
     excerpt: [],
     description: [],
-    price: [],
-    video: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -88,10 +84,9 @@ export default function CourseUpdateForm(props) {
         let modelFields = {
           name,
           image,
+          price,
           excerpt,
           description,
-          price,
-          video,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -144,10 +139,9 @@ export default function CourseUpdateForm(props) {
             const modelFields = {
               name: value,
               image,
+              price,
               excerpt,
               description,
-              price,
-              video,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -173,10 +167,9 @@ export default function CourseUpdateForm(props) {
             const modelFields = {
               name,
               image: value,
+              price,
               excerpt,
               description,
-              price,
-              video,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -192,6 +185,34 @@ export default function CourseUpdateForm(props) {
         {...getOverrideProps(overrides, "image")}
       ></TextField>
       <TextField
+        label="Price"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={price}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              image,
+              price: value,
+              excerpt,
+              description,
+            };
+            const result = onChange(modelFields);
+            value = result?.price ?? value;
+          }
+          if (errors.price?.hasError) {
+            runValidationTasks("price", value);
+          }
+          setPrice(value);
+        }}
+        onBlur={() => runValidationTasks("price", price)}
+        errorMessage={errors.price?.errorMessage}
+        hasError={errors.price?.hasError}
+        {...getOverrideProps(overrides, "price")}
+      ></TextField>
+      <TextField
         label="Excerpt"
         isRequired={false}
         isReadOnly={false}
@@ -202,10 +223,9 @@ export default function CourseUpdateForm(props) {
             const modelFields = {
               name,
               image,
+              price,
               excerpt: value,
               description,
-              price,
-              video,
             };
             const result = onChange(modelFields);
             value = result?.excerpt ?? value;
@@ -231,10 +251,9 @@ export default function CourseUpdateForm(props) {
             const modelFields = {
               name,
               image,
+              price,
               excerpt,
               description: value,
-              price,
-              video,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -248,64 +267,6 @@ export default function CourseUpdateForm(props) {
         errorMessage={errors.description?.errorMessage}
         hasError={errors.description?.hasError}
         {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Price"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={price}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              image,
-              excerpt,
-              description,
-              price: value,
-              video,
-            };
-            const result = onChange(modelFields);
-            value = result?.price ?? value;
-          }
-          if (errors.price?.hasError) {
-            runValidationTasks("price", value);
-          }
-          setPrice(value);
-        }}
-        onBlur={() => runValidationTasks("price", price)}
-        errorMessage={errors.price?.errorMessage}
-        hasError={errors.price?.hasError}
-        {...getOverrideProps(overrides, "price")}
-      ></TextField>
-      <TextField
-        label="Video"
-        isRequired={false}
-        isReadOnly={false}
-        defaultValue={video}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              image,
-              excerpt,
-              description,
-              price,
-              video: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.video ?? value;
-          }
-          if (errors.video?.hasError) {
-            runValidationTasks("video", value);
-          }
-          setVideo(value);
-        }}
-        onBlur={() => runValidationTasks("video", video)}
-        errorMessage={errors.video?.errorMessage}
-        hasError={errors.video?.hasError}
-        {...getOverrideProps(overrides, "video")}
       ></TextField>
       <Flex
         justifyContent="space-between"
