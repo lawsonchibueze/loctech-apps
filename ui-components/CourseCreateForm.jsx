@@ -45,6 +45,7 @@ export default function CourseCreateForm(props) {
     level: undefined,
     curriculum: undefined,
     name: undefined,
+    image: undefined,
   };
   const [category, setCategory] = React.useState(initialValues.category);
   const [isFeatured, setIsFeatured] = React.useState(initialValues.isFeatured);
@@ -70,6 +71,7 @@ export default function CourseCreateForm(props) {
   const [level, setLevel] = React.useState(initialValues.level);
   const [curriculum, setCurriculum] = React.useState(initialValues.curriculum);
   const [name, setName] = React.useState(initialValues.name);
+  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setCategory(initialValues.category);
@@ -86,6 +88,7 @@ export default function CourseCreateForm(props) {
     setLevel(initialValues.level);
     setCurriculum(initialValues.curriculum);
     setName(initialValues.name);
+    setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
@@ -103,6 +106,7 @@ export default function CourseCreateForm(props) {
     level: [],
     curriculum: [],
     name: [],
+    image: [{ type: "URL" }],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -136,6 +140,7 @@ export default function CourseCreateForm(props) {
           level,
           curriculum,
           name,
+          image: image || undefined,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -199,6 +204,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.category ?? value;
@@ -277,6 +283,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.isFeatured ?? value;
@@ -313,6 +320,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.excerpt ?? value;
@@ -358,6 +366,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.price ?? value;
@@ -395,6 +404,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.trainingMethod ?? value;
@@ -447,6 +457,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.video ?? value;
@@ -483,6 +494,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.courseDetails ?? value;
@@ -519,6 +531,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.duration ?? value;
@@ -555,6 +568,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.LearningObjective ?? value;
@@ -593,6 +607,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.CourseRequirement ?? value;
@@ -631,6 +646,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.targetAudience ?? value;
@@ -668,6 +684,7 @@ export default function CourseCreateForm(props) {
               level: value,
               curriculum,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.level ?? value;
@@ -720,6 +737,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum: value,
               name,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.curriculum ?? value;
@@ -756,6 +774,7 @@ export default function CourseCreateForm(props) {
               level,
               curriculum,
               name: value,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -769,6 +788,43 @@ export default function CourseCreateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
+      ></TextField>
+      <TextField
+        label="Image"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              category,
+              isFeatured,
+              excerpt,
+              price,
+              trainingMethod,
+              video,
+              courseDetails,
+              duration,
+              LearningObjective,
+              CourseRequirement,
+              targetAudience,
+              level,
+              curriculum,
+              name,
+              image: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.image ?? value;
+          }
+          if (errors.image?.hasError) {
+            runValidationTasks("image", value);
+          }
+          setImage(value);
+        }}
+        onBlur={() => runValidationTasks("image", image)}
+        errorMessage={errors.image?.errorMessage}
+        hasError={errors.image?.hasError}
+        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"

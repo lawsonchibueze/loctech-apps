@@ -28,6 +28,7 @@ export declare type CourseUpdateFormInputValues = {
     level?: string;
     curriculum?: string;
     name?: string;
+    image?: string;
 };
 export declare type CourseUpdateFormValidationValues = {
     category?: ValidationFunction<string>;
@@ -44,6 +45,7 @@ export declare type CourseUpdateFormValidationValues = {
     level?: ValidationFunction<string>;
     curriculum?: ValidationFunction<string>;
     name?: ValidationFunction<string>;
+    image?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CourseUpdateFormOverridesProps = {
@@ -62,6 +64,7 @@ export declare type CourseUpdateFormOverridesProps = {
     level?: FormProps<SelectFieldProps>;
     curriculum?: FormProps<TextFieldProps>;
     name?: FormProps<TextFieldProps>;
+    image?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type CourseUpdateFormProps = React.PropsWithChildren<{
     overrides?: CourseUpdateFormOverridesProps | undefined | null;

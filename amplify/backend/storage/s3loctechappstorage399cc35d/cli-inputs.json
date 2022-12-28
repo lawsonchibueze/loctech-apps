@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3loctechappstorage399cc35d",
+  "bucketName": "loctechapp-storage-399cc35d",
+  "policyUUID": "baf19379",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import Advert from "../components/Advert";
 import Category from "../components/Category";
 import Footer from "../components/Footer";
@@ -12,6 +12,20 @@ import { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Course } from "../models";
 import Link from "next/link";
+
+// const normalizeSrc = (src) => (src[0] === "/" ? src.slice(1) : src);
+
+// export function cloudinaryLoader({ src, width, quality }) {
+//   const params = [
+//     "f_auto",
+//     "c_limit",
+//     "w_" + width,
+//     "q_" + (quality || "auto"),
+//   ];
+//   return `https://res.cloudinary.com/${
+//     process.env.CLOUDINARY_CLOUD_NAME
+//   }/image/upload/${params.join(",")}/${normalizeSrc(src)}`;
+// }
 
 export default function Home() {
   const [courses, setCourses] = useState([]);
@@ -45,6 +59,20 @@ export default function Home() {
             <p>{course.excerpt}</p>
             <p>{course.courseDetails}</p>
             <p>{course.level}</p>
+
+            <img
+              className="w-36 h-36 bg-contain bg-center rounded-full sm:mx-0 sm:shrink-0"
+              src={course.video}
+              alt="image"
+            />
+
+            <img
+              className="w-500 h-500 bg-contain bg-center rounded-full sm:mx-0 sm:shrink-0"
+              src={course.image}
+              alt="image"
+            />
+
+            <p>{course.price}</p>
           </Link>
         ))}
 

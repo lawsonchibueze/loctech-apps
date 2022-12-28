@@ -20,7 +20,7 @@ export const schema = {
                 "image": {
                     "name": "image",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSURL",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -233,6 +233,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "image": {
+                    "name": "image",
+                    "isArray": false,
+                    "type": "AWSURL",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -407,5 +414,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "e99ee4dea7befee6d7a9546285c3338b"
+    "version": "eb3a4da8c9acdc1fa68b072e68c0b28b"
 };

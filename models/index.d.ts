@@ -86,6 +86,7 @@ type EagerCourse = {
   readonly curriculum?: string | null;
   readonly Instructors?: (CourseInstructor | null)[] | null;
   readonly name?: string | null;
+  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -111,6 +112,7 @@ type LazyCourse = {
   readonly curriculum?: string | null;
   readonly Instructors: AsyncCollection<CourseInstructor>;
   readonly name?: string | null;
+  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -57,7 +57,7 @@ export default function InstructorUpdateForm(props) {
   React.useEffect(resetStateValues, [instructorRecord]);
   const validations = {
     name: [],
-    image: [],
+    image: [{ type: "URL" }],
     twitter: [],
     instagram: [],
     facebook: [],
@@ -81,7 +81,7 @@ export default function InstructorUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          image,
+          image: image || undefined,
           twitter,
           instagram,
           facebook,
